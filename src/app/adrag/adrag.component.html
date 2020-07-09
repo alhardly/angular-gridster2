@@ -1,0 +1,38 @@
+<style>
+  .aa {
+    width: 140px;
+    height: 50px;
+    margin-bottom: 30px;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    background: #fbe;
+    cursor: pointer;
+   
+  }
+
+  #dragNode {
+    position: fixed;
+    z-index: -1;
+    user-select: none;
+   
+  }
+
+  /* 拖拽的时候给body添加这个类名，取消拖拽的时候去掉 */
+  .dragging {
+    user-select: none !important;
+  }
+</style>
+
+<div class="options-header">
+  <!-- resize时调用 pushItem函数-->
+  
+  <div id='aa' class='aa' (mousedown)=catchStart($event) (dblclick)='dbclick()'>Drag me!</div>
+</div>
+<gridster id='aaaaa' [options]="options">
+  <gridster-item [item]="item" *ngFor="let item of dashboard" id="item{{item.id}}">
+    <div class="button-holder">
+      {{item.content}}
+    </div>
+  </gridster-item>
+</gridster>

@@ -1,0 +1,23 @@
+<div class="options-header">
+  <!-- resize时调用 pushItem函数-->
+  <button mat-raised-button color="accent" (click)="toppingItem()" class="add-button cols-2">
+    Resize first item and push others
+  </button>
+  <div id='aa' draggable="true" (dragstart)="dragStartHandler($event)" (dragend)="dragEnd($event)"
+    (mouseup)='mouseup()'>Drag me!</div>
+  <button mat-mini-fab (click)="addItem()" class="add-button cols-2">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+
+<gridster [options]="options" (dragenter)='dragenter($event)' (dragover)="allowDrop($event)">
+  <gridster-item [item]="item" *ngFor="let item of dashboard" id="item{{item.id}}">
+    <div class="button-holder">
+      {{item.content}}
+      <button mat-mini-fab (mousedown)="removeItem($event, item)" (touchstart)="removeItem($event, item)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </gridster-item>
+</gridster>

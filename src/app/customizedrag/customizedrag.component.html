@@ -1,0 +1,15 @@
+<div class="options-header">
+  <mat-checkbox [(ngModel)]="options.enableEmptyCellDrop" (ngModelChange)="changedOptions()">
+    Enable drop to add
+  </mat-checkbox>
+  <div *ngIf="options.enableEmptyCellDrop" draggable="true" (dragstart)="dragStartHandler($event)">Drag me!</div>
+</div>
+
+
+<gridster [options]="options">
+  <gridster-item [item]="item" *ngFor="let item of dashboard">
+    <div class="button-holder">
+      {{item.content}}
+    </div>
+  </gridster-item>
+</gridster>

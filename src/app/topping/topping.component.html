@@ -1,0 +1,21 @@
+<div class="options-header">
+  <!-- resize时调用 pushItem函数-->
+  <button mat-raised-button color="accent" (click)="toppingItem()" class="add-button cols-2">
+   topping the last item
+  </button>
+  <div *ngIf="options.enableEmptyCellDrop" draggable="true" (dragstart)="dragStartHandler($event)">Drag me!</div>
+  <button mat-mini-fab (click)="addItem()" class="add-button cols-2">
+    <mat-icon>add</mat-icon>
+  </button>
+  <!-- <button (click)="save()">保存</button> -->
+</div>
+
+
+<gridster [options]="options" (dragover)="allowDrop($event)">
+  <gridster-item [item]="item" *ngFor="let item of dashboard">
+    <div class="button-holder">
+      {{item.content}}
+     
+    </div>
+  </gridster-item>
+</gridster>
